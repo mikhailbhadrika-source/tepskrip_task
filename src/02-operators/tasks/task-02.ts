@@ -14,3 +14,7 @@
  * Task: Store and display the result in a variable named "isEligible"
 
  */
+let finalScore: number = 82;
+let attendance: number = 94;
+let tuition: boolean = true;
+const isEligible = finalScore >= 75 && attendance >= 90 && tuition ? "Is Eligible" : "Is Not Eligible"

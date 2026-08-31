@@ -14,3 +14,18 @@
  *  - Final payment
  * 2. Display the calculation results.
  */
+
+
+let nasgor: number = 18000
+let drink: number = 5000
+let nasgorQty: number = 3
+let drinkQty: number = 2
+const totalFoodPrice: number = nasgor*nasgorQty
+console.log("Total food price: ", totalFoodPrice)
+const totalDrinkPrice: number = drink*drinkQty
+console.log("Total drink price: ", totalDrinkPrice)
+const grandTotal: number = totalDrinkPrice+totalFoodPrice
+console.log("Grand total: ", grandTotal)
+console.log("Final payment: ", grandTotal-10000)
+
+

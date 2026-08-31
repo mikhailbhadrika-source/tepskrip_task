@@ -33,3 +33,12 @@
  * - Calculate the remaining scholarship budget.
  * - Display whether the student is accepted.
  */
+let studentName: string = "Alya Putri"
+let gpa: number = 3.89
+let familyIncome: number = 4200000
+let competitionCount: number = 4
+let disciplinaryRecord: boolean = false
+let documentsComplete: boolean = true
+const individualScholarshipBudget: number = gpa>3.75 && familyIncome<5000000 && competitionCount>3 && !disciplinaryRecord && documentsComplete ? 12000000 : 0
+console.log("Remaining university scholarship budget: ", 500000000 - individualScholarshipBudget)
+const scholarshipAcceptance = gpa>3.75 && familyIncome<5000000 && competitionCount>3 && !disciplinaryRecord && documentsComplete ? "Student accepted" : "Student not accepted"
