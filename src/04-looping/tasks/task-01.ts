@@ -15,3 +15,8 @@
  * 3. After the loop finishes, display: "Attendance verification completed"
 
  */
+
+for (let i = 1; i <= 30; i++) {
+  console.log(`Checking attendace for Sudent ${i}`);
+}
+console.log("Attendace verification completed.")

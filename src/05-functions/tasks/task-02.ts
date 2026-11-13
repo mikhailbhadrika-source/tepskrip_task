@@ -21,3 +21,13 @@
  * 3. Display the bonus result inside the function.
  * 4. Call the function for every employee.
  */
+
+let employee1: string = "John Cena" 
+let employee2: string = "Undertaker"
+let employee3: string = "Rey Mysterio"
+function showBonusStatus(employeeName : string, performanceScore : number): void {
+    console.log(employeeName, performanceScore>=85? `Bonus Approved` : `Bonus Not Approved`)
+}
+showBonusStatus("John Cena", 92)
+showBonusStatus("Undertaker", 76)
+showBonusStatus("Rey Mysterio", 88)

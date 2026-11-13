@@ -25,3 +25,55 @@ const submissions = [
     { student: "Gita", submitted: true, score: 90 },
     { student: "Hana", submitted: true, score: 73 }
 ];
+
+let submittedCount = 0;
+let notSubmittedCount = 0;
+let passedCount = 0;
+let revisionCount = 0;
+
+let notSubmittedStudents: string[] = [];
+let revisionStudents: string[] = [];
+
+let totalScore = 0;
+let numberOfStudents = submissions.length;
+
+let i = 0;
+
+while (i < submissions.length) {
+    const student = submissions[i];
+
+    if (student.submitted) {
+        submittedCount++;
+
+        totalScore += student.score;
+
+        if (student.score >= 75) {
+            passedCount++;
+        } else {
+            revisionCount++;
+            revisionStudents.push(student.student);
+        }
+
+    } else {
+        notSubmittedCount++;
+        notSubmittedStudents.push(student.student);
+    }
+
+    i++;
+}
+
+const averageScore = numberOfStudents === 0
+    ? 0
+    : totalScore / numberOfStudents;
+
+console.log("===== LMS ASSIGNMENT REPORT =====");
+
+console.log(`Submitted assignments: ${submittedCount}`);
+console.log(`Not submitted: ${notSubmittedCount}`);
+console.log(`Students who passed: ${passedCount}`);
+console.log(`Students requiring revision: ${revisionCount}`);
+
+console.log(`Students who did not submit: ${notSubmittedStudents.join(", ")}`);
+console.log(`Students requiring revision: ${revisionStudents.join(", ")}`);
+
+console.log(`Class average score: ${averageScore.toFixed(2)}`);

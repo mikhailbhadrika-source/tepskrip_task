@@ -92,3 +92,185 @@ const enrollments = [
         duration: 20
     }
 ];
+
+function totalEnrollments (enrollments: {student: string, course: string, completed: boolean, score: number, duration: number}[]): number {
+    let total = 0
+    for (const {student} of enrollments) {
+        total ++
+    }
+    return total
+}
+
+function completedEnrollments (enrollments: {student: string, course: string, completed: boolean, score: number, duration: number}[]): number {
+    let total = 0
+    for (const {completed} of enrollments) {
+        completed === true
+        ? total ++ 
+        : total
+    }
+    return total
+}
+
+function incompleteEnrollments (enrollments: {student: string, course: string, completed: boolean, score: number, duration: number}[]): number {
+    let total = 0
+    for (const {completed} of enrollments) {
+        completed === false
+        ? total ++ 
+        : total
+    }
+    return total
+}
+
+function enrollmentPercentage (enrollments: {student: string, course: string, completed: boolean, score: number, duration: number}[]): number {
+    let enrolled = 0
+    let unenrolled = 0
+    for (const {completed} of enrollments) {
+        completed === true 
+        ? enrolled ++ 
+        : unenrolled ++
+    }
+    return enrolled/(enrolled+unenrolled)*100
+}
+
+function findHighestScore(enrollments: {student: string, course: string, completed: boolean, score: number, duration: number}[]): number {
+      let highest = enrollments[0].score;
+    for (const {score} of enrollments) {
+        if (score > highest) {
+            highest = score;
+        }
+} return highest }
+
+function findLowestScore(enrollments: {student: string, course: string, completed: boolean, score: number, duration: number}[]): number {
+      let lowest = enrollments[0].score;
+    for (const {score} of enrollments) {
+        if (score < lowest) {
+            lowest = score;
+        }
+} return lowest }
+
+function calculateAverageScore(enrollments: {student: string, course: string, completed: boolean, score: number, duration: number}[]): number {
+  let total = 0;
+  let numberOfValues = 0;
+  for (const {score} of enrollments) {
+    total += score;
+  };
+  for (const {score} of enrollments) {
+    numberOfValues ++
+  }
+  return total / numberOfValues
+}
+
+function passedStudents(enrollments: {student: string, course: string, completed: boolean, score: number, duration: number}[]): string[] {
+     return enrollments
+        .filter(enrollments => enrollments.score <= 75)
+        .map(enrollments => enrollments.student);
+}
+
+function countStudentsByCourse(enrollments: {student: string, course: string, completed: boolean, score: number, duration: number}[]): string {
+  let TypeScript = 0;
+  let Database = 0;
+  let Backend = 0;
+  for (const {course} of enrollments) {
+    if (course === "TypeScript") {
+      TypeScript ++
+    } else if (course === "Database") {
+      Database ++
+    } else {
+      Backend ++
+    }
+  }
+  return `TypeScript: ${TypeScript}
+  Database: ${Database}
+  Backend: ${Backend}`
+}
+
+function averageCourseScore (enrollments: {student: string, course: string, completed: boolean, score: number, duration: number}[]): string {
+    let totTS = 0;
+    let numTS = 0;
+    let totDB = 0;
+    let numDB = 0;
+    let numBE = 0;
+    let totBE = 0;
+    for(const {course, score} of enrollments) {
+        if(course === "TypeScript") {
+            totTS += score;
+            numTS ++
+        } else if(course === "Database") {
+            totDB += score;
+            numDB ++
+        } else {
+            totBE += score;
+            numBE ++
+        }
+    } 
+    const avgTS = totTS / numTS;
+    const avgDB = totDB / numDB;
+    const avgBE = totBE / numBE;
+        return `
+        Average score for TypeScript: ${avgTS}
+        Average score for Database: ${avgDB}
+        Average score for Backend: ${avgBE}`
+}
+
+function calculateTotalDuration(enrollments: {student: string, course: string, completed: boolean, score: number, duration: number}[]): number {
+  let total = 0;
+  for (const {duration} of enrollments) {
+    total += duration;
+  };
+  return total
+}
+
+function calculateAverageDuration(enrollments: {student: string, course: string, completed: boolean, score: number, duration: number}[]): number {
+  let total = 0;
+  let numberOfValues = 0;
+  for (const {duration} of enrollments) {
+    total += duration;
+  };
+  for (const {duration} of enrollments) {
+    numberOfValues ++
+  }
+  return total / numberOfValues
+}
+
+function printEnrollmentReport(enrollments: {
+    student: string,
+    course: string,
+    completed: boolean,
+    score: number,
+    duration: number
+}[]): void {
+
+    console.log("========== ENROLLMENT REPORT ==========");
+
+    console.log(`Total enrollments: ${totalEnrollments(enrollments)}`);
+    console.log(`Completed enrollments: ${completedEnrollments(enrollments)}`);
+    console.log(`Incomplete enrollments: ${incompleteEnrollments(enrollments)}`);
+    console.log(`Completion percentage: ${enrollmentPercentage(enrollments).toFixed(2)}%`);
+
+    console.log(`Highest score: ${findHighestScore(enrollments)}`);
+    console.log(`Lowest score: ${findLowestScore(enrollments)}`);
+    console.log(`Average score: ${calculateAverageScore(enrollments).toFixed(2)}`);
+
+    console.log(`Students who passed: ${passedStudents(enrollments).join(", ")}`);
+}
+
+function printCourseReport(enrollments: {
+    student: string,
+    course: string,
+    completed: boolean,
+    score: number,
+    duration: number
+}[]): void {
+
+    console.log("========== COURSE REPORT ==========");
+
+    console.log(countStudentsByCourse(enrollments));
+
+    console.log(averageCourseScore(enrollments));
+
+    console.log(`Total learning duration: ${calculateTotalDuration(enrollments)}`);
+    console.log(`Average learning duration: ${calculateAverageDuration(enrollments).toFixed(2)}`);
+}
+
+printEnrollmentReport(enrollments)
+printCourseReport(enrollments)

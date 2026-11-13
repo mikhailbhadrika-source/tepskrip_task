@@ -21,3 +21,34 @@ const orders = [
   { id: "ORD005", paid: false, stockAvailable: false },
   { id: "ORD006", paid: true, stockAvailable: true }
 ];
+
+const attendances = [
+    { name: "Alya", present: true },
+    { name: "Budi", present: false },
+    { name: "Citra", present: true },
+    { name: "Dimas", present: true },
+    { name: "Eka", present: false }
+];
+
+let presentCount = 0;
+let absentCount = 0;
+let absentStudents: string[] = [];
+
+for (const { name, present } of attendances) {
+    if (present) {
+        presentCount++;
+    } else {
+        absentCount++;
+        absentStudents.push(name);
+    }
+}
+
+const attendancePercentage = attendances.length === 0
+    ? 0
+    : (presentCount / attendances.length) * 100;
+
+console.log("===== ATTENDANCE REPORT =====");
+console.log(`Present Students: ${presentCount}`);
+console.log(`Absent Students: ${absentCount}`);
+console.log(`Absent Student Names: ${absentStudents.join(", ")}`);
+console.log(`Attendance Percentage: ${attendancePercentage.toFixed(2)}%`);

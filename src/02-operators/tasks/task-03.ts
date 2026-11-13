@@ -19,22 +19,15 @@ import { domainToASCII } from "node:url";
  * - Bonus
  * - Final salary
  */
-type employeeSalary = {
-    employeeName: string;
-    basicSalary: number;
-    overtimeHours: number;
-    overtimeRate: number;
-}
-const employeeName = "Dimas"
-const basicSalary = 5000000
-const overtimeHours = 12
-const overtimeRate = 50000
-if (overtimeHours > 10) {
-    console.log("Overtime Pay: Rp", overtimeHours*overtimeRate+300000);
-    console.log("Bonus: Rp", 300000)
-    console.log("Final Salary: Rp", basicSalary+(overtimeHours*overtimeRate)+300000);
-} else {
-    console.log("Overtime Pay: Rp", overtimeHours*overtimeRate);
-    console.log("Bonus: No Bonus")
-    console.log("Final Salary: Rp", basicSalary+(overtimeHours*overtimeRate));
-    }
+
+const employeeName: string = "Dimas"
+const basicSalary: number = 5000000
+const overtimeHours: number = 12
+const overtimeRate: number = 50000
+const performanceBonus: number = overtimeHours > 10 ? 300000 : 0
+const overtimePay : number = (overtimeHours*overtimeRate)
+const finalSalary : number = basicSalary + overtimePay + performanceBonus 
+
+ console.log("Overtime Pay: Rp"+ overtimePay);
+    console.log("Bonus: Rp"+ performanceBonus)
+    console.log("Final Salary: Rp"+ finalSalary)

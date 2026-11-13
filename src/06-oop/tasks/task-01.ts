@@ -27,7 +27,70 @@
 //        - getInfo() returns "{brand} {model}"
 
 // Uncomment and use after completing the TODOs:
-/*
+
+interface Animal {
+    name: string;
+    species: string;
+    speak(): string;
+}
+class Dog implements Animal {
+    name: string;
+    species: string = 'Dog';
+
+    constructor (
+        name: string,
+    ) {
+        this.name = name
+    }
+    speak(): string {
+    return `${this.name} says Woof!`;
+    }
+}
+
+class Cat implements Animal {
+    name: string;
+    species: string = 'Cat';
+
+    constructor (
+        name: string,
+    ) {
+        this.name = name
+    }
+    speak(): string {
+    return `${this.name} says Meow!`;
+    }
+}
+
+abstract class Vehicle {
+    constructor (protected brand: string) {
+        this.brand = brand;
+    }
+    abstract getInfo(): string;
+    getBrand(): string {
+        return (`Brand: ${this.brand}`)
+    }
+}
+
+class Car extends Vehicle {
+    brand: string;
+    model: string;
+
+    constructor (
+        brand: string,
+        model: string
+    ) {
+        super(brand);
+        this.brand = brand;
+        this.model = model
+    }
+    getInfo(): string {
+        return (
+            `Brand: ${this.brand}
+            Model: ${this.model}`)
+    }
+}
+
+
 const dog = new Dog("Buddy");
 const cat = new Cat("Whiskers");
 const car = new Car("Toyota", "Camry");
@@ -36,6 +99,5 @@ console.log(dog.speak());   // expected: "Buddy says: Woof!"
 console.log(cat.speak());   // expected: "Whiskers says: Meow!"
 console.log(car.getInfo()); // expected: "Toyota Camry"
 console.log(car.getBrand()); // expected: "Toyota"
-*/
 
 console.log("Complete the TODOs above, then uncomment the test code.");

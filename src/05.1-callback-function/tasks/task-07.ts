@@ -27,7 +27,12 @@
  * - It should only process the students and execute the callback.
  */
 
-const students = [
+type Students = {
+    name: string,
+    score: number,
+    attendance: number
+}
+const students: Students[] = [
     { name: "Alya", score: 92, attendance: 96 },
     { name: "Budi", score: 68, attendance: 88 },
     { name: "Citra", score: 84, attendance: 91 },
@@ -35,3 +40,9 @@ const students = [
     { name: "Eka", score: 95, attendance: 82 },
     { name: "Fajar", score: 79, attendance: 97 }
 ];
+
+type PASS_FAIL = "YES" | "NO"
+type ACADEMIC_PERFORMANCE = Students & { Pass?: PASS_FAIL} & 
+type 
+
+function passOrFail ()

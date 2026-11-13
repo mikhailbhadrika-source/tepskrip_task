@@ -9,3 +9,47 @@
  * 
  * display the attendance data using console.log.
  */
+
+type Attendance = {
+    employeeId: string;
+    employeeName: string;
+    date: string;
+    checkInTime: string;
+    checkOutTime: string;
+    totalWorkingHours: number;
+    isPresent: boolean;
+};
+
+const attendance1: Attendance = {
+    employeeId: "EMP001",
+    employeeName: "Andi Mananrang",
+    date: "2026-11-13",
+    checkInTime: "08:00",
+    checkOutTime: "17:00",
+    totalWorkingHours: 9,
+    isPresent: true
+};
+
+const attendance2: Attendance = {
+    employeeId: "EMP002",
+    employeeName: "Saiful Hidayat",
+    date: "2026-11-13",
+    checkInTime: "08:30",
+    checkOutTime: "16:30",
+    totalWorkingHours: 8,
+    isPresent: true
+};
+
+const attendance3: Attendance = {
+    employeeId: "EMP003",
+    employeeName: "Dzany Rangga",
+    date: "2026-11-13",
+    checkInTime: "-",
+    checkOutTime: "-",
+    totalWorkingHours: 0,
+    isPresent: false
+};
+
+console.log("Attendance 1:", attendance1);
+console.log("Attendance 2:", attendance2);
+console.log("Attendance 3:", attendance3);

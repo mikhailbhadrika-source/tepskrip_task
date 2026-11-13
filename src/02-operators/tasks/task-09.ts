@@ -1,4 +1,4 @@
-import { subscribe } from "diagnostics_channel"
+cimport { subscribe } from "diagnostics_channel"
 
 /**
  * An online marketplace wants to calculate the customer's final payment and reward points after checkout.

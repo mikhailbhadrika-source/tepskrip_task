@@ -30,17 +30,46 @@ const scores = [
 ];
 
 function findHighestScore(scores: number[]): number {
-
-}
+      let largest = scores[0];
+    for (const number of scores) {
+        if (number > largest) {
+            largest = number;
+        }
+} return largest }
 
 function findLowestScore(scores: number[]): number {
-
+  let lowest = scores[0];
+    for (const number of scores) {
+        if (number < lowest) {
+            lowest = number;
+        }
+    }
+    return lowest
 }
 
 function calculateAverage(scores: number[]): number {
-    
+  let total = scores[0];
+  let numberOfValues = 0;
+  for (const number of scores) {
+    total += number;
+  };
+  for (const number of scores) {
+    numberOfValues ++
+  }
+  return total / numberOfValues
 }
 
 function countPassedStudents(scores: number[]): number {
-
+  let passedStudents = 0
+  for (const number of scores) {
+    number <= 75
+    ? passedStudents ++
+    : passedStudents + 0 
+  }
+  return passedStudents
 }
+
+console.log (`Highest score:` + findHighestScore)
+console.log (`Lowest score: ` + findLowestScore)
+console.log (`Average score:` + calculateAverage)
+console.log (` Number of passed students:` + countPassedStudents)

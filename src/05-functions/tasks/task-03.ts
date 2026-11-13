@@ -18,3 +18,9 @@ const prices = [
     420000,
     125000
 ];
+
+function calculateTotalPrice(prices: number[]): number {
+    return prices.reduce((total, n) => total + n, 0);
+}
+
+console.log(calculateTotalPrice(prices))

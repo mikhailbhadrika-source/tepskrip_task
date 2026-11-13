@@ -21,3 +21,33 @@ const products = [
  * 
  * Instead of creating a separate loop for every operation, the developer creates a reusable processing function.
  */
+
+type products = {
+    name: string,
+    price: number
+}
+
+function processPrice(
+    products: products[],
+    callback: (product: products) => void
+): void {
+    for(const product of products) {
+        callback(product)
+    }
+}
+
+function expensiveProducts(
+    product: products
+){
+    if(product.price >= 1000000) {
+        console.log(`Name: ${product.name}, Price: ${processPrice}`)
+}}
+
+function discountedProducts(
+    product: products){
+    if(product.price >= 500000) {
+        console.log(`Name: ${product.name}, Original price: ${product.price}, Discounted price: ${product.price * 9/10}`)
+}}
+
+processPrice(products, expensiveProducts)
+processPrice(products, discountedProducts)

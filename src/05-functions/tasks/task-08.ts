@@ -54,3 +54,75 @@ const submissions = [
         score: 96
     }
 ];
+
+function countTotalStudents(submissions: {student: string, submitted: boolean, score: number}[]): number {
+    let totalStudents = 0;
+    for (const {student} of submissions) {
+      totalStudents ++
+} return totalStudents
+}
+
+function countSubmittedAssignments(submissions: {student: string, submitted: boolean, score: number}[]): number {
+    let numberOfSubmittedAssignments = 0;
+    for (const {submitted} of submissions) {
+      submitted === true
+      ? numberOfSubmittedAssignments ++
+      : numberOfSubmittedAssignments
+}
+return numberOfSubmittedAssignments
+}
+
+function countMissingAssignments(submissions: {student: string, submitted: boolean, score: number}[]): number {
+    let numberOfMissingAssignments = 0;
+    for (const {submitted} of submissions) {
+      submitted === false
+      ? numberOfMissingAssignments ++
+      : numberOfMissingAssignments
+}
+return numberOfMissingAssignments
+    }
+
+function passedStudents(submissions: {student: string, submitted: boolean, score: number}[]): string[] {
+     return submissions
+        .filter(submission => submission.score <= 75)
+        .map(submission => submission.student);
+}
+
+function studentsRequiringRevision(submissions: {student: string, submitted: boolean, score: number}[]): string[] {
+    return submissions
+        .filter(submission => submission.score <= 75)
+        .map(submission => submission.student);
+}
+
+function averageScore(submissions: {student: string, submitted: boolean, score: number}[]): number {
+  let total = 0;
+  let numberOfValues = 0;
+  for (const {score} of submissions) {
+    total += score;
+    numberOfValues ++
+  }
+  return total / numberOfValues
+}
+
+function highestScore(submissions: {student: string, submitted: boolean, score: number}[]): number {
+    let highest = submissions[0].score;
+    for (const {score} of submissions) {
+        if (score > highest) {
+            highest = score;
+        }
+    }
+    return highest
+}
+
+function printReport (submissions: {student: string, submitted: boolean, score: number}[]): void {
+    console.log (`
+        Total students: ${countTotalStudents(submissions)}
+        Submitted assignments: ${countSubmittedAssignments(submissions)}
+        Missing assignments: ${countMissingAssignments(submissions)}
+        Passed students: ${passedStudents(submissions)}
+        Students requiring revision: ${studentsRequiringRevision(submissions)}
+        Average score: ${averageScore(submissions)}
+        Highest score: ${highestScore(submissions)}`)
+}
+
+printReport(submissions)
