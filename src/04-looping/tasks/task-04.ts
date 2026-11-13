@@ -35,5 +35,36 @@ const sales = [
 99000,
 640000,
 18000
-]
+];
 
+let totalRevenue = 0;
+let highestTransaction = sales[0];
+let lowestTransaction = sales[0];
+let transactionsAbove300k = 0;
+let numberOfTransactions = 0;
+
+for (const sale of sales) {
+    totalRevenue += sale;
+
+    if (sale > highestTransaction) {
+        highestTransaction = sale;
+    }
+
+    if (sale < lowestTransaction) {
+        lowestTransaction = sale;
+    }
+
+    if (sale >= 300000) {
+        transactionsAbove300k++;
+    }
+
+    numberOfTransactions++;
+}
+
+const averageTransaction = totalRevenue / numberOfTransactions;
+
+console.log("Total sales revenue:", totalRevenue);
+console.log("Highest transaction:", highestTransaction);
+console.log("Lowest transaction:", lowestTransaction);
+console.log("Transactions >= Rp300,000:", transactionsAbove300k);
+console.log("Average transaction:", averageTransaction);

@@ -1,4 +1,4 @@
-cimport { subscribe } from "diagnostics_channel"
+//cimport { subscribe } from "diagnostics_channel"
 
 /**
  * An online marketplace wants to calculate the customer's final payment and reward points after checkout.
@@ -36,26 +36,46 @@ cimport { subscribe } from "diagnostics_channel"
  * - Free shipping eligibility
 
  */
+
 let item1Price: number = 850000
 let item1Qty: number = 1
+
 let item2Price: number = 275000
 let item2Qty: number = 2
+
 let item3Price: number = 420000
 let item3Qty: number = 1
+
 let premium: boolean = true
-let subtotal: number = item1Price*item1Qty + item2Price*item2Qty + item3Price*item3Qty
-const discount = premium ? subtotal/10 : 0
+
+let subtotal: number =
+    item1Price * item1Qty +
+    item2Price * item2Qty +
+    item3Price * item3Qty
+
+const discount = premium ? subtotal / 10 : 0
+
 const subtotalAfterDisc: number = subtotal - discount
-const subtotalBeforeTax: number = subtotal - discount - 100000
-const rewardPoints: number = subtotalBeforeTax/50
-const finalPayment: number = subtotalBeforeTax+(subtotalBeforeTax*(11/100))
-console.log("Product subtotal: ", subtotal)
-console.log("Membership discount: ", subtotal/10)
-console.log("Voucher: ", 100000)
-console.log("VAT: ", (subtotalBeforeTax*(11/100)))
-console.log("Final payment: ", finalPayment)
-console.log("Reward points: ", rewardPoints)
-const shpping = premium || subtotalBeforeTax>1500000 ? "Free shipping" : "No free shipping"
 
+const voucher: number = 100000
 
+const subtotalBeforeTax: number = subtotalAfterDisc - voucher
+
+const rewardPoints: number = Math.floor(subtotalBeforeTax / 50)
+
+const vat: number = subtotalBeforeTax * (11 / 100)
+
+const finalPayment: number = subtotalBeforeTax + vat
+
+const shipping = premium || subtotalBeforeTax > 1500000
+    ? "Free shipping"
+    : "No free shipping"
+
+console.log("Product subtotal:", subtotal)
+console.log("Membership discount:", discount)
+console.log("Voucher:", voucher)
+console.log("VAT:", vat)
+console.log("Final payment:", finalPayment)
+console.log("Reward points:", rewardPoints)
+console.log("Shipping:", shipping)
 

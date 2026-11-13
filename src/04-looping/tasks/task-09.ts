@@ -65,3 +65,13 @@ for (const {score} of students) {
         lowestScore = score
     }
 }
+
+console.log("Number of A students:", numberOfAStudents);
+console.log("Number of B students:", numberOfBStudents);
+console.log("Number of C students:", numberOfCStudents);
+console.log("Number of D students:", numberOfDStudents);
+console.log("Highest score:", highestScore);
+console.log("Lowest score:", lowestScore);
+console.log("Number of students:", numberOfStudents);
+console.log("Total score:", totalScore);
+console.log("Average score:", averageScore);

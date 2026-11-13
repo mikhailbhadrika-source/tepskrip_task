@@ -27,11 +27,37 @@
  * - It should only process the students and execute the callback.
  */
 
+
 type Students = {
-    name: string,
-    score: number,
-    attendance: number
-}
+    name: string;
+    score: number;
+    attendance: number;
+};
+
+type PASS_FAIL = "YES" | "NO";
+
+type ACADEMIC_PERFORMANCE =
+    | "Excellent"
+    | "Good"
+    | "Needs Improvement";
+
+type ATTENDANCE_STATUS =
+    | "Satisfactory"
+    | "Unsatisfactory";
+
+type RECOMMENDATION =
+    | "Excellent"
+    | "Good"
+    | "Improve Attendance"
+    | "Improve Academic Performance";
+
+type StudentReport = Students & {
+    pass: PASS_FAIL;
+    academicPerformance: ACADEMIC_PERFORMANCE;
+    attendanceStatus: ATTENDANCE_STATUS;
+    recommendation: RECOMMENDATION;
+};
+
 const students: Students[] = [
     { name: "Alya", score: 92, attendance: 96 },
     { name: "Budi", score: 68, attendance: 88 },
@@ -41,8 +67,63 @@ const students: Students[] = [
     { name: "Fajar", score: 79, attendance: 97 }
 ];
 
-type PASS_FAIL = "YES" | "NO"
-type ACADEMIC_PERFORMANCE = Students & { Pass?: PASS_FAIL} & 
-type 
+function passOrFail(student: Students): PASS_FAIL {
+    return student.score >= 75 && student.attendance >= 90
+        ? "YES"
+        : "NO";
+}
+function academicPerformance(student: Students): ACADEMIC_PERFORMANCE {
+    if (student.score >= 90) {
+        return "Excellent";
+    } else if (student.score >= 75) {
+        return "Good";
+    } else {
+        return "Needs Improvement";
+    }
+}
 
-function passOrFail ()
+function attendanceStatus(student: Students): ATTENDANCE_STATUS {
+    return student.attendance >= 90
+        ? "Satisfactory"
+        : "Unsatisfactory";
+}
+
+function finalRecommendation(student: Students): RECOMMENDATION {
+    if (student.score >= 90 && student.attendance >= 90) {
+        return "Excellent";
+    } else if (student.score >= 75 && student.attendance >= 90) {
+        return "Good";
+    } else if (student.score >= 75 && student.attendance < 90) {
+        return "Improve Attendance";
+    } else {
+        return "Improve Academic Performance";
+    }
+}
+
+function processStudents(
+    students: Students[],
+    callback: (student: Students) => void
+): void {
+    for (const student of students) {
+        callback(student);
+    }
+}
+
+processStudents(students, (student) => {
+    const report: StudentReport = {
+        ...student,
+        pass: passOrFail(student),
+        academicPerformance: academicPerformance(student),
+        attendanceStatus: attendanceStatus(student),
+        recommendation: finalRecommendation(student)
+    };
+
+    console.log("---------------------------");
+    console.log("Name:", report.name);
+    console.log("Score:", report.score);
+    console.log("Attendance:", report.attendance + "%");
+    console.log("Pass:", report.pass);
+    console.log("Academic Performance:", report.academicPerformance);
+    console.log("Attendance Status:", report.attendanceStatus);
+    console.log("Recommendation:", report.recommendation);
+});
